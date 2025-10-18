@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.shopping.mall.mapper.SearchMapper">
+    <select id="searchProducts" parameterType="string" resultType="com.shopping.mall.domain.Product">
+        SELECT
+        id,
+        name,
+        description,
+        price,
+        stock,
+        category,
+        thumbnail_url AS thumbnailUrl,
+        created_at AS createdAt,
+        updated_at AS updatedAt
+        FROM tb_prd
+        WHERE name LIKE CONCAT('%', #{keyword}, '%')
+        ORDER BY  DESC
+    </select>
+</mapper>
