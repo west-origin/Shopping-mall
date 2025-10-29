@@ -8,8 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class SearchController {
     @GetMapping("/search")
     public String searchItem(){
-        System.out.println("실행함!!!!");
-
+        System.out.println("실행함!");
         return "shop";
     }
 }
