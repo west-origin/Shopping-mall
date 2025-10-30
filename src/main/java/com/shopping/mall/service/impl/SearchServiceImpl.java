@@ -2,12 +2,13 @@ package com.shopping.mall.service.impl;
 
 import com.shopping.mall.domain.Product;
 import com.shopping.mall.mapper.SearchDao;
+import com.shopping.mall.service.SearchService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class SearchServiceImpl {
+public class SearchServiceImpl implements SearchService {
     private final SearchDao searchDao;
 
     public SearchServiceImpl(SearchDao searchDao) {
