@@ -16,8 +16,8 @@ public class SearchServiceImpl implements SearchService {
     }
 
     @Override
-    public List<Product> searchByName(String keyword) {
-        return searchDao.findByNameContaining(keyword);
+    public List<Product> searchProducts(String keyword) {
+        return searchDao.searchProducts(keyword);
     }
 
     @Override

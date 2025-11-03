@@ -10,7 +10,7 @@ public interface SearchService {
      * @param keyword 검색 키워드
      * @return 검색된 상품 리스트
      */
-    List<Product> searchByName(String keyword);
+    List<Product> searchProducts(String keyword);
 
     /**
      * 카테고리로 검색

@@ -3,23 +3,28 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.shopping.mall.mapper.SearchMapper">
+<mapper namespace="com.shopping.mall.mapper.SearchDao">
 
     <select id="searchProducts" parameterType="string" resultType="com.shopping.mall.domain.Product">
         SELECT
-        id,
-        name,
-        description,
-        price,
-        stock,
-        category,
-        thumbnail_url AS thumbnailUrl,
-        created_at AS createdAt,
-        updated_at AS updatedAt
-        FROM tb_prd
-        WHERE name LIKE CONCAT('%', #{keyword}, '%')
-        ORDER BY  DESC
+        p.prd_id AS prdId,
+        p.prd_nm AS prdNm,
+        p.cntnt AS cntnt,
+        p.prd_prc AS prdPrc,
+        p.prd_sl AS prdSl,
+        p.stck AS stck,
+        p.rdt AS rdt,
+        p.del AS del,
+        c.ctgr_id AS ctgrId,
+        c.ctgr_nm AS ctgrNm
+        FROM product p
+        JOIN category c ON p.ctgr_id = c.ctgr_id
+        WHERE p.prd_nm LIKE CONCAT('%', #{keyword}, '%')
+        OR c.ctgr_nm LIKE CONCAT('%', #{keyword}, '%')
+        ORDER BY p.prd_id DESC
     </select>
+
+
 
     <select id="findByNameContaining" parameterType="string" resultType="com.shopping.mall.domain.Product">
         SELECT *

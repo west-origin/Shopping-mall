@@ -23,7 +23,8 @@ public class SearchController {
 
     @GetMapping("/search")
     public String searchItem(@RequestParam("keyword") String keyword, Model model) {
-        List<Product> results = searchService.searchByName(keyword);
+        List<Product> results = searchService.searchProducts(keyword);
+        System.out.println("result"+results);
         model.addAttribute("products", results);
         return "shop";
     }

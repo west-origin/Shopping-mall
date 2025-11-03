@@ -8,7 +8,7 @@ import java.util.List;
 @Mapper
 public interface SearchDao {
 
-    List<Product> findByNameContaining(@Param("keyword") String keyword);
+    List<Product> searchProducts(@Param("keyword") String keyword);
 
     List<Product> findByCategoryId(@Param("categoryId") Long categoryId);
 
