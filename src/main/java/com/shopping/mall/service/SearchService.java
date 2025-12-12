@@ -1,6 +1,8 @@
 package com.shopping.mall.service;
 
 import com.shopping.mall.domain.Product;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -10,7 +12,7 @@ public interface SearchService {
      * @param keyword 검색 키워드
      * @return 검색된 상품 리스트
      */
-    List<Product> searchProducts(String keyword);
+     Page<Product> searchProducts(String keyword, Pageable pageable);
 
     /**
      * 카테고리로 검색

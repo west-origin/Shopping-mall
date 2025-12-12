@@ -5,10 +5,15 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
+
 @Mapper
 public interface SearchDao {
 
-    List<Product> searchProducts(@Param("keyword") String keyword);
+    Page<Product> searchProducts(@Param("keyword") String keyword,
+                                @Param("pageable") Pageable pageable);
 
     List<Product> findByCategoryId(@Param("categoryId") Long categoryId);
 

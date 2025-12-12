@@ -4,6 +4,10 @@ import com.shopping.mall.domain.Product;
 import com.shopping.mall.mapper.SearchDao;
 import com.shopping.mall.service.SearchService;
 import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
+
 
 import java.util.List;
 
@@ -16,8 +20,9 @@ public class SearchServiceImpl implements SearchService {
     }
 
     @Override
-    public List<Product> searchProducts(String keyword) {
-        return searchDao.searchProducts(keyword);
+    public Page<Product> searchProducts(String keyword, Pageable pageable) {
+
+        return searchDao.searchProducts(keyword, pageable);
     }
 
     @Override
