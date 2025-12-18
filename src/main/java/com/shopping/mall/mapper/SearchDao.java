@@ -12,8 +12,7 @@ import org.springframework.data.domain.PageRequest;
 @Mapper
 public interface SearchDao {
 
-    Page<Product> searchProducts(@Param("keyword") String keyword,
-                                @Param("pageable") Pageable pageable);
+    List<Product> searchProducts(@Param("keyword") String keyword);
 
     List<Product> findByCategoryId(@Param("categoryId") Long categoryId);
 

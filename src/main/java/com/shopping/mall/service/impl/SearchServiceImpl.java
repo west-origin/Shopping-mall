@@ -20,9 +20,9 @@ public class SearchServiceImpl implements SearchService {
     }
 
     @Override
-    public Page<Product> searchProducts(String keyword, Pageable pageable) {
+    public List<Product> searchProducts(String keyword) {
 
-        return searchDao.searchProducts(keyword, pageable);
+        return searchDao.searchProducts(keyword);
     }
 
     @Override

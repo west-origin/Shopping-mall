@@ -5,7 +5,7 @@
 
 <mapper namespace="com.shopping.mall.mapper.SearchDao">
 
-    <select id="searchProducts" parameterType="com.shopping.mall.domain.Product" resultType="map">
+    <select id="searchProducts" parameterType="string" resultType="com.shopping.mall.domain.Product">
         SELECT
         p.prd_id AS prdId,
         p.prd_nm AS prdNm,
@@ -23,7 +23,6 @@
         WHERE p.prd_nm LIKE CONCAT('%', #{keyword}, '%')
         OR c.ctgr_nm LIKE CONCAT('%', #{keyword}, '%')
         ORDER BY p.prd_id DESC
-        LIMIT #{pageable.pageSize} OFFSET #{pageable.offset}
     </select>
 
 
