@@ -1,6 +1,7 @@
 package com.shopping.mall.service.impl;
 
 import com.shopping.mall.domain.Product;
+import com.shopping.mall.domain.SearchRequest;
 import com.shopping.mall.mapper.SearchDao;
 import com.shopping.mall.service.SearchService;
 import org.springframework.stereotype.Service;
@@ -20,9 +21,9 @@ public class SearchServiceImpl implements SearchService {
     }
 
     @Override
-    public List<Product> searchProducts(String keyword) {
+    public List<Product> searchProducts(SearchRequest searchRequest) {
 
-        return searchDao.searchProducts(keyword);
+        return searchDao.searchProducts(searchRequest);
     }
 
     @Override

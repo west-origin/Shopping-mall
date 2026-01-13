@@ -1,6 +1,7 @@
 package com.shopping.mall.web;
 
 import com.shopping.mall.domain.Product;
+import com.shopping.mall.domain.SearchRequest;
 import com.shopping.mall.service.SearchService;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +18,7 @@ public class SearchController {
     }
 
     @GetMapping("/search")
-    public List<Product> getProducts(@RequestParam("keyword") String keyword) {
-        return searchService.searchProducts(keyword);
+    public List<Product> getProducts(SearchRequest searchRequest) {
+        return searchService.searchProducts(searchRequest);
     }
 }

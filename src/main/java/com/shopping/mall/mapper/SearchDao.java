@@ -1,6 +1,7 @@
 package com.shopping.mall.mapper;
 
 import com.shopping.mall.domain.Product;
+import com.shopping.mall.domain.SearchRequest;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
@@ -12,7 +13,7 @@ import org.springframework.data.domain.PageRequest;
 @Mapper
 public interface SearchDao {
 
-    List<Product> searchProducts(@Param("keyword") String keyword);
+    List<Product> searchProducts(SearchRequest searchRequest);
 
     List<Product> findByCategoryId(@Param("categoryId") Long categoryId);
 

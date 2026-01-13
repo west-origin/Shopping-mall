@@ -5,7 +5,7 @@
 
 <mapper namespace="com.shopping.mall.mapper.SearchDao">
 
-    <select id="searchProducts" parameterType="string" resultType="com.shopping.mall.domain.Product">
+    <select id="searchProducts" parameterType="com.shopping.mall.domain.SearchRequest" resultType="com.shopping.mall.domain.Product">
         SELECT
         p.prd_id AS prdId,
         p.prd_nm AS prdNm,
@@ -20,9 +20,18 @@
         c.ctgr_nm AS ctgrNm
         FROM product p
         JOIN category c ON p.ctgr_id = c.ctgr_id
-        WHERE p.prd_nm LIKE CONCAT('%', #{keyword}, '%')
-        OR c.ctgr_nm LIKE CONCAT('%', #{keyword}, '%')
+        <where>
+            <if test="keyword != null and keyword != ''">
+                AND (p.prd_nm LIKE CONCAT('%', #{keyword}, '%')
+                OR c.ctgr_nm LIKE CONCAT('%', #{keyword}, '%'))
+            </if>
+            <if test="category != null and category != '' and category != 'all'">
+                AND c.ctgr_nm = #{category}
+            </if>
+            AND p.del = 'N'
+        </where>
         ORDER BY p.prd_id DESC
+        LIMIT #{size} OFFSET #{page} * #{size}
     </select>
 
 
