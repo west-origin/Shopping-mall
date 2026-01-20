@@ -21,12 +21,13 @@
         FROM product p
         JOIN category c ON p.ctgr_id = c.ctgr_id
         <where>
-            <if test="keyword != null and keyword != ''">
-                AND (p.prd_nm LIKE CONCAT('%', #{keyword}, '%')
-                OR c.ctgr_nm LIKE CONCAT('%', #{keyword}, '%'))
-            </if>
             <if test="category != null and category != '' and category != 'all'">
                 AND c.ctgr_nm = #{category}
+            </if>
+            <if test="keyword != null and keyword != ''">
+                AND (
+                    p.prd_nm LIKE CONCAT('%', #{keyword}, '%') OR c.ctgr_nm LIKE CONCAT('%', #{keyword}, '%')
+                )
             </if>
             AND p.del = 'N'
         </where>
