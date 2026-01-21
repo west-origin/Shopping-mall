@@ -21,9 +21,9 @@
         FROM product p
         JOIN category c ON p.ctgr_id = c.ctgr_id
         <where>
-            <if test="category != null and category != '' and category != 'all'">
+            <!--<if test="category != null and category != '' and category != 'all'">
                 AND c.ctgr_nm = #{category}
-            </if>
+            </if>-->
             <if test="keyword != null and keyword != ''">
                 AND (
                     p.prd_nm LIKE CONCAT('%', #{keyword}, '%') OR c.ctgr_nm LIKE CONCAT('%', #{keyword}, '%')
@@ -32,7 +32,7 @@
             AND p.del = 'N'
         </where>
         ORDER BY p.prd_id DESC
-        LIMIT #{size} OFFSET #{page} * #{size}
+        LIMIT #{size} OFFSET ${page * size}
     </select>
 
 
